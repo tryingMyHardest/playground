@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body{
+                background-color: #252525;
+            }
+            
+            details{
+                background-color: aliceblue;
+                margin: auto;
+                transition: all .5s ease;
+    
+            }
+            
+            summary{
+                background-color: aliceblue;
+                text-align: center;
+                list-style: none;
+                height: 25px;
+                transition: all .5s ease;
+            }
+
+            details summary::-webkit-details-marker { display:none; 
+            }
+
+            summary:hover{
+                background-color: #252525d0;
+                cursor: pointer;
+            }
+
+            details[open] summary{
+                box-shadow: 0 3px 5px #252525;
+                background-color: #252525;
+            }
+            details summary:after{
+                content: "View Code";
+                padding: 10px;
+                font-size: 20px;
+                transition: all .25s ease;
+            }
+
+            details[open] summary:after{
+                content: "Collapse Code";
+                color: #ffffff;
+            }
+
+            details[open]{
+                width: 100%;
+            }
+
+            details:not([open]){
+                width: 50%;
+            }
+
+
+            @keyframes growContent {
+                0% {
+                font-size: 0;
+                opacity: 0;
+                }
+                100% {
+                font-size: 1em;
+                opacity: 0;
+                }
+            }
+            details[open] .content {
+                animation: growContent .5s ease;
+            }
+        </style>
+    </head>
+    <body>
+        
+        <details>
+            <summary data-open="Collapse Code" data-close="View Code"></summary>
+            <div class="content">This is content to display<br>
+            testy<br>
+            test </div>
+        </details>
+    </body>
+</html>

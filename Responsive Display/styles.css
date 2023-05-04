@@ -5,7 +5,6 @@ body{
     background: #a8a8a8;
     margin: 0;
 }
-
 ::-webkit-scrollbar{
     display: none;
 }
@@ -186,7 +185,7 @@ a:hover{
         background-size: 1em 1em;
         background-color: #404040;
         opacity: 1; */
-         background: url(header-background.svg);
+        
     }
 }
 

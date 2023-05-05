@@ -146,11 +146,25 @@
 
 
 @media only screen and (min-width: 767px){
+
+    @font-face {
+        font-family: jostTitle;
+        src: url(Jost/fonts/Jost-400-Book.ttf);
+    }
+    @font-face {
+        font-family: jostLight;
+        src: url(Jost/fonts/Jost-200-Thin.ttf);
+    }
+    @font-face {
+        font-family: jostHair;
+        src: url(Jost/fonts/Jost-100-Hairline.ttf);
+    }
     html{
         scroll-behavior: smooth;
+        font-size: 20px;
     }
     body{
-        background: #404040;
+        background: #44519f;
         margin: 0;
     }
     ::-webkit-scrollbar{
@@ -158,22 +172,36 @@
     }
     h1{
         font-size: 4rem;
+        font-family: jostTitle;
     }
     h2{
-        font-size: 2rem;
+        font-size: 3rem;
+        font-family: jostLight;
     }
 
     /* -------------------------------------- Nav Bar --------------------------------------- */
     nav{
-        margin-top: 5vh;
         position: fixed;
         top: 0;
-        background: transparent;
         display: flex;
-        justify-content: right;
+        justify-content: space-between;
         width: 100%;
+        height: 10vh;
         transition: all .5s ease;
         z-index: 10;
+    }
+
+    .title{
+        font-size: 3rem;
+        margin-top: 1.5vh;
+        margin-left: 2.5vw;
+        opacity: 0;
+        color: whitesmoke;
+        transition: all 1s ease-in-out;
+    }
+
+    .display{
+        opacity: 1;
     }
 
     .burger{
@@ -181,24 +209,56 @@
     }
 
     .menu{
+        display: flex;
         padding-right: 5vw;
+        height: fit-content;
     }
 
     .menu button{
+        margin-top: 5vh;
         border-style: none;
         background: none;
         opacity: 0;
         animation: fadeIn 3s forwards var(--d);
+        font-family: jostLight;
+        padding-left: 2vw;
+        padding-right: 2vw;
+        font-size: 1rem;
         color: whitesmoke;
+        transition: color .5s ease;
     }
+
+    .menu button:after{
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #a1ffba;
+        transform: scaleX(0);
+        transform-origin: right;
+        z-index: -1;
+        transition: transform .5s ease;
+    }
+
     .menu button:hover{
         cursor: pointer;
-        text-decoration: dashed underline overline;
-        color: #27497c;
+        color: #252525;
     }
+
+    .menu button:hover:after{
+        transform: scaleX(1);
+        transform-origin: left;
+    }
+
     @keyframes fadeIn {
-        from{transform: translateY(20px);}
+        from{opacity: 0;transform: translateY(20px);}
         to{opacity: 1; transform: none;}
+    }
+    @keyframes fadeOut {
+        from{transform: translateY(0);}
+        to{opacity: 0;transform: translateY(20px);}
     }
 
     /* ----------------------------------------- Intro ------------------------------------------------- */
@@ -206,7 +266,7 @@
         height: 80vh;
         width: 95vw;
         padding-left: 5vw;
-        padding-top: 25vh;
+        padding-top: 20vh;
     }
 
     .intro .textLine{
@@ -215,7 +275,7 @@
     
     .intro{
         width: fit-content;
-        padding: 5vh 5vw;
+        padding: 2.5vh 5vw;
         color: transparent;
         border-radius: 25px;
         z-index: 10;
@@ -233,9 +293,7 @@
     
     .color{
         --total: calc(var(--duration) + var(--delay));
-        position: relative;
         color: transparent;
-        overflow: hidden;
         animation: revealColor 1.5s var(--total) forwards;
     }
     
@@ -265,7 +323,7 @@
     }
     @keyframes revealColor {
         to {
-            color: #27497c;
+            color: #da6f6f;
         }
     }
     @keyframes rollIn {
@@ -304,19 +362,20 @@
         border-radius: 50%;
     }
 
-    .circles li:nth-child(odd){
+    li.bubbleOdd{
+        background: var(--b);
         aspect-ratio: 1/1;
         width: var(--width);
         top: calc(100vh - var(--width) - 5vh);
-        animation: float var(--duration) linear infinite var(--d);
-        animation-iteration-count: 10;
+        animation: float var(--duration) linear  infinite var(--d);
     }
-    .circles li:nth-child(even){
+
+    li.bubbleEven{
+        background: var(--b);
         aspect-ratio: 1/1;
         width: var(--width);
         top: calc((var(--width) + 5vh));
         animation: float var(--duration) linear infinite var(--d);
-        animation-iteration-count: 10;
     }
 
     @keyframes float {
